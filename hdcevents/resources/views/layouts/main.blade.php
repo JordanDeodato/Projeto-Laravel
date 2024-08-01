@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-lg navbar-ligth">
             <div class="collapse navbar-collapse" id="navbar">
                 <a href="/" class="navbar-brand">
-                    <img src="https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="HDC Events">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small/abstract-circle-logo-icon-free-png.png" alt="HDC Events">
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">

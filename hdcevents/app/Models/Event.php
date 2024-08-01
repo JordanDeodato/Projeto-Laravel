@@ -9,19 +9,32 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'date',
+        'city',
+        'private',
+        'description',
+        'items',
+        'image',
+        'user_id'
+    ];
+
     protected $casts = [
         'items' => 'array'
     ];
-    
+
     protected $dates = ['date'];
 
     protected $guarded = [];
 
-    public function user(){
-        return $this->belongTo('App\Models\User');
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
-    public function users(){
-        return $this->belongsToMany('App\Models\User');
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'event_user', 'event_id', 'user_id');
     }
 }

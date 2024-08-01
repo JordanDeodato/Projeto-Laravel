@@ -15,16 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EventController;
 
-Route::get('/', [EventController::class, 'index']);
-Route::get('/events/create', [EventController::class, 'create'])->middleware('auth');
-Route::get('/events/{id}', [EventController::class, 'show']);
-Route::post('/events', [EventController::class, 'store']);
-Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
-Route::get('/events/edit/{id}', [EventController::class, 'edit'])->middleware('auth');
-Route::put('/events/update/{id}', [EventController::class, 'update'])->middleware('auth');
+Route::controller(EventController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/dashboard', 'dashboard');
+        Route::get('/', 'getEvents');
+        Route::get('/events/create', 'create');
+        Route::post('/events', 'createNewEvent');
+        Route::get('/events/edit/{event}', 'edit');
+        Route::put('/events/update/{id}', 'updateEvent');
+        Route::get('/events/{event}', 'show');
+        Route::delete('/events/{id}', 'deleteEvent');
+        Route::post('/events/join/{id}', 'joinEvent');
+        Route::delete('/events/leave/{id}', 'leaveEvent');
+    });
 
-Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
-
-Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->middleware('auth');
-
-Route::delete('/events/leave/{id}', [EventController::class, 'leaveEvent'])->middleware('auth');
